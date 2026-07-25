@@ -1,0 +1,139 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#de6262,#ffb882);
+}
+
+/* Card */
+
+.card{
+    width:400px;
+    height:520px;
+    perspective:1000px;
+}
+
+.card-inner{
+    position:relative;
+    width:100%;
+    height:100%;
+    transition:transform .8s;
+    transform-style:preserve-3d;
+}
+
+/* JavaScript will add this class */
+.card-inner.flip{
+    transform:rotateY(180deg);
+}
+
+/* Both forms */
+
+.form-box{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#fadada;
+    border-radius:15px;
+    padding:35px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    backface-visibility:hidden;
+}
+
+/* Signup starts on the back */
+
+.signup{
+    transform:rotateY(180deg);
+}
+
+/* Heading */
+
+.form-box h2{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+/* Form */
+
+.form-box form{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-box label{
+    margin-bottom:6px;
+    font-weight:bold;
+}
+
+.form-box input{
+    width:100%;
+    padding:12px;
+    margin-bottom:18px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+}
+
+.form-box input:focus{
+    border-color:#d16d1b;
+    box-shadow:0 0 8px rgba(209,109,27,0.25);
+}
+
+/* Button */
+
+.form-box input[type="submit"]{
+    background:#dc602b;
+    
+    color:#fadada;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.form-box input[type="submit"]:hover{
+    background:royalblue
+
+}
+
+/* Footer */
+
+.form-box p{
+    text-align:center;
+    margin-top:10px;
+}
+
+.form-box a{
+    text-decoration:none;
+    color:royalblue;
+    font-weight:bold;
+}
+
+.form-box a:hover{
+    text-decoration:underline;
+}
+.flash-message{
+    width: 100%;
+    margin: 10px 0 15px;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    background: #f3bfb9;
+    color: d33333;
+    border: 1px solid #f5c2c2;
+}

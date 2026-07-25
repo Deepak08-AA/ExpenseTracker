@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login_Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css')}}">
+    <!-- <script src="{{ url_for('static', filename='auth.js') }}"></script> -->
+</head>
+
+<body>
+
+    <body>
+        <div class="card">
+            <div class="card-inner">
+                <div class="form-box login">
+                    <h2>Login</h2>
+                    <form action="/login_validation" method="post" class="form-example">
+                        <label for="username">username <br> </label>
+                        <input type="text" name="username" id="username" required placeholder="username" />
+
+                        <label for="login-email">email <br> </label>
+                        <input type="email" name="email" id="login-email" required placeholder="email" />
+
+                        <label for="login-password">password <br> </label>
+                        <input type="password" name="password" id="login-password" required minlength="5" placeholder="password" />
+
+                        <input type="submit" value="login" />
+                        {% with messages = get_flashed_messages(category_filter=["login"]) %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="flash-message">{{ message }}</div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                    </form>
+                    <p>Don't have an account? <a href="#" id="signup-link">create account</a></p>
+                </div>
+
+                <div class="form-box signup">
+                    <h2>SignUP</h2>
+                    <form action="/add_user" method="post" class="form-example">
+                        <label for="fusername">username <br> </label>
+                        <input type="text" name="username" id="fusername" required placeholder="username" />
+
+                        <label for="signup-email">email <br> </label>
+                        <input type="email" name="email" id="signup-email" required placeholder="email" />
+
+                        <label for="signup-password">password <br> </label>
+                        <input type="password" name="password" id="signup-password" required placeholder="password" />
+
+                        <input type="submit" value="signUp" />
+                        {% with messages = get_flashed_messages(category_filter=["signup"]) %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="flash-message">{{ message }}</div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+
+                    </form>
+                    <p>Already have an account? <a href="#" id="login-link">Login</a></p>
+
+                </div>
+
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+    </body>
+</body>
+
+</html>

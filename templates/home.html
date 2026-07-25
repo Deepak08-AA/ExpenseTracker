@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='home2.css') }}">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+
+        <div class="heading">
+            <h2>CashFlow</h2>
+            <p>Welcome Back {{Name}} !</p>
+        </div>
+
+        <form action="/logout">
+            <button class="logout-btn" type="submit">
+                Logout
+            </button>
+        </form>
+
+    </header>
+
+    <!-- Stats -->
+    <div class="stats">
+
+        <div class="card">
+            <h4>Total</h4>
+            <p>₹{{ total }}</p>
+        </div>
+
+        <div class="card">
+            <h4>Maximum</h4>
+            <p>₹{{ maximum }}</p>
+        </div>
+
+        <div class="card">
+            <h4>Minimum</h4>
+            <p>₹{{ minimum }}</p>
+        </div>
+
+    </div>
+
+    <!-- Table + Category -->
+    <div class="main-container">
+
+        <!-- Expense Table -->
+        <div class="box">
+
+            <div class="table-header">
+
+                <h3>Recent Expenses</h3>
+
+                <form action="/add">
+                    <button class="add-btn" type="submit">
+                        + Add Expense
+                    </button>
+                </form>
+
+            </div>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Payment</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for expense in expenses %}
+
+                    <tr>
+
+                        <td>{{ loop.index }}</td>
+
+                        <td>₹{{ expense["amount"] }}</td>
+
+                        <td>{{ expense["category"] }}</td>
+
+                        <td>{{ expense["payment_method"] }}</td>
+
+                        <td>{{ expense["date"] }}</td>
+
+                        <td>
+
+                            <a class="update-btn" href="/update/{{ expense['id'] }}">
+                                Update
+                            </a>
+
+                            <a class="delete-btn" href="/delete/{{ expense['id'] }}">
+                                Delete
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- Category Summary -->
+        <div class="details">
+
+            <h3>Category Summary</h3>
+
+            {% for category, total in category_data %}
+
+            <div class="category-item">
+
+                <span>{{ category }}</span>
+
+                <strong>₹{{ total }}</strong>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
