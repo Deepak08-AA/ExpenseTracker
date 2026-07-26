@@ -10,6 +10,24 @@ A full-stack Expense Tracker web application built with **Flask, Python, SQLite,
 
 ---
 
+## 📸 Screenshots
+
+### Login Page
+
+![Login](screenshots/login.png)
+
+### Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+### Add Expense
+
+![Add Expense](screenshots/add.png)
+
+### Update Expense
+
+![Update Expense](screenshots/update.png)
+
 ## ✨ Features
 
 - 🔐 User Signup & Login
